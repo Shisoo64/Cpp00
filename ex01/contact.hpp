@@ -6,7 +6,7 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:14:35 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/26 15:15:50 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/04/27 16:42:31 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 class Contact {
 	public:
+		void SetVars();
+		std::string GetFirstName();
+		std::string GetLastName();
+		std::string GetNickName();
+		std::string GetPhoneNumber();
+		std::string GetSecret();
 		Contact();					//Constructor
 		~Contact();					//Destructor
 
