@@ -6,7 +6,7 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:26:59 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/27 18:43:37 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/04/29 00:27:03 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,13 +41,34 @@ void PhoneBook::ShowContact(int id){
 	std::cout<< "Your NickName : "<< this->ContactList[id].GetNickName() << std::endl;
 }
 
+std::string FormatString(std::string str)
+{
+    if (str.length() > 9)
+            return str.substr(0, 9) + ".";
+    return str;
+}
+
+void PhoneBook::ShowContactLine(int id){
+	std::cout<< "|";
+	std::cout<< std::setw(10)<< id;
+	std::cout<< "|";
+	std::cout<< std::setw(10)<< FormatString(this->ContactList[id].GetFirstName());
+	std::cout<< "|";
+	std::cout<< std::setw(10)<< FormatString(this->ContactList[id].GetLastName());
+	std::cout<< "|";
+	std::cout<< std::setw(10)<< FormatString(this->ContactList[id].GetNickName())<< "|" << std::endl;
+}
+
 void PhoneBook::Search(void){
 	std::cout<< "\n" << "🔍 YOU'RE IN SEARCH MODE 🔍" << std::endl;
 	
+	std::cout << "┌──────────┬──────────┬──────────┬──────────┐" << std::endl;
+	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
+	std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 	for (size_t i = 0; i < 8; i++)
 	{
 		if (!ContactList[i].GetFirstName().empty())
-			PhoneBook::ShowContact(i);
+			PhoneBook::ShowContactLine(i);
 	}
 	std::cout<< "\n";
 	return;
