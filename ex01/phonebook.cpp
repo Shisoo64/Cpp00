@@ -6,13 +6,14 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:26:59 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/29 00:27:03 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/04/29 23:41:31 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.hpp"
 #include <iostream>
 #include <iomanip>
+#include <stdlib.h>
 
 PhoneBook::PhoneBook(){
 	CurrentContact = 0;
@@ -36,9 +37,9 @@ void PhoneBook::Add(void){
 
 void PhoneBook::ShowContact(int id){
 	std::cout<< std::setw(10);
-	std::cout<< "Your FirstName : "<< this->ContactList[id].GetFirstName() << std::endl;
-	std::cout<< "Your LastName : "<< this->ContactList[id].GetLastName() << std::endl;
-	std::cout<< "Your NickName : "<< this->ContactList[id].GetNickName() << std::endl;
+	std::cout<< "FirstName: "<< this->ContactList[id].GetFirstName() << std::endl;
+	std::cout<< "LastName: "<< this->ContactList[id].GetLastName() << std::endl;
+	std::cout<< "NickName: "<< this->ContactList[id].GetNickName() << std::endl;
 }
 
 std::string FormatString(std::string str)
@@ -66,10 +67,19 @@ void PhoneBook::Search(void){
 	std::cout << "|     index|first name| last name|  nickname|" << std::endl;
 	std::cout << "├──────────┼──────────┼──────────┼──────────┤" << std::endl;
 	for (size_t i = 0; i < 8; i++)
-	{
 		if (!ContactList[i].GetFirstName().empty())
 			PhoneBook::ShowContactLine(i);
-	}
+	std::cout << "└───────────────────────────────────────────┘" << std::endl;
 	std::cout<< "\n";
+	
+	std::string Prompt;
+
+	std::cout << "Enter an index: ";
+	std::getline(std::cin, Prompt);
+    std::cout << std::endl;
+	if (Prompt.length() == 1 && Prompt[0] <= '7' && Prompt[0] >= '0')
+		PhoneBook::ShowContact(std::atoi(Prompt.c_str()));
+	else
+		std::cout<< "\e[1;91m⛔ "<< "Wrong index"<< "\e[0m"<< std::endl;
 	return;
 }
