@@ -6,7 +6,7 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 16:41:57 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/27 18:16:21 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:14:28 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main()
 	std::cout<< "📞 WELCOME TO THE ROMIL PHONEBOOK 📖"<< "\n\n";
 	while (std::cin)
 	{
-		std::cout<< "Type a command: " << "\n";
+		std::cout<< "Type a command: "<< std::endl;
 		std::getline(std::cin, Prompt);
 		if (Prompt == "ADD")
 			Book.Add();

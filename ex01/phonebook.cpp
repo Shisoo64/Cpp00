@@ -6,7 +6,7 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:26:59 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/29 23:41:31 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:16:53 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,14 @@ void PhoneBook::Add(void){
 
 void PhoneBook::ShowContact(int id){
 	std::cout<< std::setw(10);
-	std::cout<< "FirstName: "<< this->ContactList[id].GetFirstName() << std::endl;
-	std::cout<< "LastName: "<< this->ContactList[id].GetLastName() << std::endl;
-	std::cout<< "NickName: "<< this->ContactList[id].GetNickName() << std::endl;
+	std::cout<< "First name: "<< this->ContactList[id].GetFirstName() << std::endl;
+	std::cout<< "Last name: "<< this->ContactList[id].GetLastName() << std::endl;
+	std::cout<< "Nickname: "<< this->ContactList[id].GetNickName() << std::endl;
+	std::cout<< "Phone number: "<< this->ContactList[id].GetPhoneNumber() << std::endl;
+	std::cout<< "Darkest secret: "<< this->ContactList[id].GetSecret() << "\n" << std::endl;
 }
 
-std::string FormatString(std::string str)
-{
+std::string FormatString(std::string str){
     if (str.length() > 9)
             return str.substr(0, 9) + ".";
     return str;

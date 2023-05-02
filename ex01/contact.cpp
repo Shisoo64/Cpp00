@@ -6,7 +6,7 @@
 /*   By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:26:59 by rlaforge          #+#    #+#             */
-/*   Updated: 2023/04/29 02:01:05 by rlaforge         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:06:32 by rlaforge         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,17 +21,29 @@ Contact::~Contact(){
 	return;
 }
 
+std::string EnterNonNullString(){
+	std::string Prompt;
+	
+	while (std::cin && Prompt.empty())
+	{
+		std::getline(std::cin, Prompt);
+		if (Prompt.empty())
+			std::cout<< "\e[1;91m⛔ "<< "This value can't be empty, please enter a valid input : "<< "\e[0m";
+	}
+	return (Prompt);
+} 
+
 void Contact::SetVars(void){
 	std::cout<< "Enter the first name: ";
-	std::getline(std::cin, this->FirstName);
+	this->FirstName = EnterNonNullString();
 	std::cout<< "Enter the last name: ";
-	std::getline(std::cin, this->LastName);
+	this->LastName = EnterNonNullString();
 	std::cout<< "Enter the nickname: ";
-	std::getline(std::cin, this->NickName);
+	this->NickName = EnterNonNullString();
 	std::cout<< "Enter the phone Number: ";
-	std::getline(std::cin, this->PhoneNumber);
+	this->PhoneNumber = EnterNonNullString();
 	std::cout<< "Enter the darkest secret: ";
-	std::getline(std::cin, this->Secret);
+	this->Secret = EnterNonNullString();
 	return;
 }
 
