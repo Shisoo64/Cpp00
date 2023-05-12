@@ -6,11 +6,11 @@
 #    By: rlaforge <rlaforge@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/21 16:40:05 by rlaforge          #+#    #+#              #
-#    Updated: 2023/05/04 14:20:53 by rlaforge         ###   ########.fr        #
+#    Updated: 2023/05/02 18:15:12 by rlaforge         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS =	megaphone.cpp
+SRCS =	tests.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
@@ -20,7 +20,7 @@ RM = rm -f
 
 CC = c++
 
-NAME = megaphone
+NAME = GlobalBanksters
 
 all: logo ${NAME}
 
@@ -29,15 +29,15 @@ logo :
 	@echo " \e[1;34m/\ \"-./  \ /\  __ \ /\ \/ /  /\  ___\   \e[0m"
 	@echo " \e[1;34m\ \ \-./\ \\\\\\ \  __ \\\\\\ \  _\"-.\ \  __\   \e[0m"
 	@echo " \e[1;34m \ \_\ \ \_\\\\\\ \_\ \_\\\\\\ \_\ \_\\\\\\ \_____\ \e[0m"
-	@echo " \e[1;34m  \/_/  \/_/ \/_/\/_/ \/_/\/_/ \/_____/ \e[0m\n"
+	@echo " \e[1;34m  \/_/  \/_/ \/_/\/_/ \/_/\/_/ \/_____/ \e[0m\n\n"
 
 ${NAME} :	${OBJS}
 		@${CC} ${OBJS} -o ${NAME}
-		@echo "\e[1A\e[2K\e[1A\e[2K\e[1;32m📦 $(NAME) compiled!\n\e[0m"
+		@echo "\e[1A\e[2K\e[1;32m📦 $(NAME) compiled!\n\e[0m"
 
 %.o	: %.cpp
 		@${CC} ${CFLAGS} $< -c -o $@
-		@echo "\e[1m🗜️ Compiling $@\e[0m"
+		@echo "\e[1A\e[2K\e[1m🗜️ Compiling $@\e[0m"
 
 clean:
 		@echo "\e[1;91m🧹 Cleaning binary files\e[0m"
